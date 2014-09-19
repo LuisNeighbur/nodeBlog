@@ -1,4 +1,4 @@
-var mongoose = require('./model');
+var mongoose = require('./models');
 var Schema       = mongoose.Schema;
 var PostSchema   = new Schema({
 	content: String,
