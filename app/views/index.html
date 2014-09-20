@@ -4,6 +4,8 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/static/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/static/css/blog.css">
+	<meta name="viewport" content="width=device-width">
 	<title>{{ title }}</title>
 	<script src="/static/js/holder.js"></script>
 </head>
@@ -23,14 +25,14 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			      <ul class="nav navbar-nav">
 			        <li class="dropdown">
-			        	<a href="#"><span class="glyphicon glyphicon-pencil"></span> Publish</a>
+			        	<a href="#">Index</a>
 			        </li>
 			        <li><a href="#">Link</a></li>
 			        <li class="dropdown">
-			          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-pencil"></span> Publish</a>
 			          <ul class="dropdown-menu" role="menu">
 			            <div class="form-group">
-			       			<form method="post" action="/publish">
+			       			<form method="post" action="/publish" id="publish">
 			       				<label for="title">Titulo</label>
 			       				<input type="text" class="form-control" name="title" placholder="Titulo">
 			       				<label for="content">Articulo</label>
@@ -53,7 +55,7 @@
 			        	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sing in</a>
 						<ul class="dropdown-menu" role="menu">
 			          	<div class="form-group">
-			          		<form action="/sign-in" method="post">
+			          		<form action="/sign-in" method="post" id="sign-in">
 				            	<label for="username">Usuario</label>
 				            	<input type="text" class="form-control" name="username">
 				            	<label for="password">Contraseña</label>
@@ -68,7 +70,7 @@
 			          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Register <span class="glyphicon glyphicon-user"></span></a>
 			          <ul class="dropdown-menu" role="menu">
 			          	<div class="form-group">
-			          		<form action="/sign-up" method="post">
+			          		<form action="/sign-up" method="post" id="sign-up">
 				            	<label for="username">Usuario</label>
 				            	<input type="text" class="form-control" name="username">
 				            	<label for="password">Contraseña</label>
@@ -86,12 +88,12 @@
 			</div>
 		</nav>
 		<div class="row">
-			<div class="col-sm-6">
+			<div class="col-sm-6" id="col-1">
 				{% for post in posts %}
 					{% if loop.index % 2 == 1 %}
 						<article>
 							<div class="thumbnail">
-								<img data-src="holder.js/100%x180" />
+								<img data-src="holder.js/100%x180/lava/text:{{ post.title }}" />
 								<h1>{{ post.title }}</h1>
 								<h5>{{ post.date|date('d/m/Y H:i:s') }}</h5>
 								<p>{{ post.content }}!</p>
@@ -101,12 +103,12 @@
 					{% endif %}
 				{% endfor %}
 			</div>
-			<div class="col-sm-6">
+			<div class="col-sm-6" id="col-2">
 				{% for post in posts %}
 					{% if loop.index % 2 == 0 %}
 						<article>
 							<div class="thumbnail">
-								<img data-src="holder.js/100%x180" />
+								<img data-src="holder.js/100%x180/lava/text:{{ post.title }}" />
 								<h1>{{ post.title }}</h1>
 								<h5>{{ post.date|date('d/m/Y H:i:s') }}</h5>
 								<p>{{ post.content }}!</p>
@@ -121,4 +123,17 @@
 </body>
 <script src="/static/js/jquery-1.11.1.min.js"></script>
 <script src="/static/js/bootstrap.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#publish, #sign-up, #sign-in').on('submit', function (e){
+			e.preventDefault();
+			$this = $(this);
+			$.post($this.attr('action'), $this.serialize(),function (res){
+				if(res.code==200){
+
+				}
+			});
+		});
+	});
+</script>
 </html>
