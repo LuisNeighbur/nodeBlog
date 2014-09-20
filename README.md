@@ -5,24 +5,24 @@ Node Simple Blog
 This project is for purpose educative only
 
 ### Install mongo with command
-```bash
-sudo apt-get install mongodb
+```sh
+$ sudo apt-get install mongodb
 ```
 ### Install redis with command
-```bash
-sudo apt-get install redis-server
+```sh
+$ sudo apt-get install redis-server
 ```
 ### Clone this repo with
-```bash
-git clone git@github.com:LuisNeighbur/nodeBlog.git
+```sh
+$ git clone git@github.com:LuisNeighbur/nodeBlog.git
 ```
 ### Install dependencies
-```bash
-npm install
+```sh
+$ npm install
 ```
 ### Run server
-```bash
-node server
+```sh
+$ node server
 ```
 
 Developed by Luis Neighbur
