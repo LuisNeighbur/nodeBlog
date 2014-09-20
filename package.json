@@ -16,5 +16,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/LuisNeighbur/nodeBlog"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "http://opensource.org/licenses/MIT"
   }
 }
