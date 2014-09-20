@@ -4,8 +4,8 @@ module.exports = {
 	},
 	redis: {
 		host: 'localhost',
-		port: 13443,
-		pass: 'redistest'
+		port: 14684,
+		pass: ''
 	},
 	secret: 'lolcatz'
 };
